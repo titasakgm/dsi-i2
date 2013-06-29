@@ -1,47 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://earth.google.com/kml/2.1">
-  <Folder>
-    <name>kml</name>
-    <Style id="gg-pin-green">
+<kml xmlns="http://earth.google.com/kml/2.0">
+  <Document>
+    <name>KML Samples</name>
+    <open>1</open>
+    <description>Unleash your creativity with the help of these examples!</description>
+    <Style id="marker_pink">
       <IconStyle>
         <Icon>
-          <href>img/gg-pin-green.png</href>
+          <href>http://203.151.201.129/dsix/img/icon_marker_pink.png</href>
         </Icon>
       </IconStyle>
     </Style>
-    <Style id="gg-pin-pink">
-      <IconStyle>
-        <Icon>
-          <href>img/gg-pin-pink.png</href>
-        </Icon>
-      </IconStyle>
-    </Style>
-    <Style id="gg-pin-blue">
-      <IconStyle>
-        <Icon>
-          <href>img/gg-pin-blue.png</href>
-        </Icon>
-      </IconStyle>
-    </Style>
-    <Placemark>
-      <name>aaa</name>
-      <description>bbb</description>
-      <styleUrl>#gg-pin-pink</styleUrl>
-      <field1>ccc</field1>
-      <field2>ddd</field2>
-      <Point>
-        <coordinates>100.0,11.0</coordinates>
-      </Point>
-    </Placemark>
-    <Placemark>
-      <name>www</name>
-      <description>xxx</description>
-      <styleUrl>#gg-pin-green</styleUrl>
-      <field1>yyy</field1>
-      <field2>zzz</field2>
-      <Point>
-        <coordinates>101.0,12.0</coordinates>
-      </Point>
-    </Placemark>
-  </Folder>
+    <Folder>
+      <name>Paths</name>
+      <visibility>0</visibility>
+      <description>DSI Desc</description>
+      <Placemark>
+        <name>DSI</name>
+        <styleUrl>#marker_pink</styleUrl>
+        <description>Just another blue icon.</description>
+        <Point>
+          <coordinates>100.5657899,13.89071588</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
 </kml>

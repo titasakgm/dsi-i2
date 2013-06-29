@@ -1,0 +1,16 @@
+HOWTO
+
+1 copy ANB.rar
+2 unrar to icons/*.bmp
+3 copy to dsi-cloud/i2/img
+4 rename to remove ( ) in filename replace space with dash (-)
+5 create i2icon3 in format a001|aircraft-carrier.bmp
+6 convert aircraft-carrier.bmp to a001.png
+7 edit dsi.tpl dsi.js map_utils.js ? add icon arrays in source code
+8 test web map app
+
+To be added
+o Delete admin-? layer
+o hide all admin-? layer so that new input will be enable!!
+
+ 
