@@ -46,7 +46,7 @@ Ext.application({
     var apiKey = "AnXErkelqCPb0UC5K-lCookgNa4-IwF1Cehgg9En9wcFz7iGblBxbZfm4484_qqK";
     
     OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
-    
+
     map = new OpenLayers.Map({
       projection: new OpenLayers.Projection("EPSG:900913"),
       displayProjection: new OpenLayers.Projection("EPSG:4326"),
@@ -167,20 +167,29 @@ Ext.application({
     toolbarItems.push("-");
     
     action = Ext.create('GeoExt.Action',{
-      control: new OpenLayers.Control.ModifyFeature(vectorLayer),
-      tooltip: 'แก้ไขจุดที่ปรากฏบนแผนที่ (ต้อง Click Mouse บนจุด/เส้น/รูปหลายเหลี่ยม เพื่อกำหนดสิ่งที่ต้องการก่อนทำการแก้ไข)',
-      map: map,
-      iconCls: 'modifyfeature',
-      toggleGroup: 'map'
+      control: new OpenLayers.Control.ModifyFeature(vectorLayer)
+      ,id: 'ctrlModify'
+      ,tooltip: 'แก้ไขจุดที่ปรากฏบนแผนที่ (ต้อง Click Mouse บนจุด/เส้น/รูปหลายเหลี่ยม เพื่อกำหนดสิ่งที่ต้องการก่อนทำการแก้ไข)'
+      ,map: map
+      ,iconCls: 'modifyfeature'
+      ,toggleGroup: 'map'
+      ,handler: function(){
+        vectorzindex = vectorLayer.getZIndex();
+        vectorLayer.setZIndex(999);
+      }
     });
     toolbarItems.push(Ext.create('Ext.button.Button', action));
     
     action = Ext.create('GeoExt.Action', {
-      control: new OpenLayers.Control.DeleteFeature(vectorLayer),
-      tooltip: "ลบทีละรายการ จุด/เส้น/รูปหลายเหลี่ยม",
-      map: map,
-      iconCls: "deletefeature",
-      toggleGroup: "map",
+      control: new OpenLayers.Control.DeleteFeature(vectorLayer)
+      ,tooltip: "ลบทีละรายการ จุด/เส้น/รูปหลายเหลี่ยม"
+      ,map: map
+      ,iconCls: "deletefeature"
+      ,toggleGroup: "map"
+      ,handler: function(){
+        vectorzindex = vectorLayer.getZIndex();
+        vectorLayer.setZIndex(999);
+      }         
     });
     toolbarItems.push(Ext.create('Ext.button.Button', action));
     
@@ -198,6 +207,7 @@ Ext.application({
           kml.removeFeatures(kml.features);
           map.removeLayer(kml);
         }
+        vectorLayer.setZIndex(vectorzindex);
       },
       allowDepress: true
     });
@@ -239,7 +249,7 @@ Ext.application({
 
     // Add Input Form 05/08/2012
     action = Ext.create('GeoExt.Action', {
-      iconCls: "info"
+      iconCls: "i2"
       ,id: 'id_select_feat'
       ,control: frm_input_ctrl
       ,tooltip: 'แบบฟอร์มนำเข้าข้อมูลจากผู้ใช้งาน'
@@ -248,6 +258,8 @@ Ext.application({
       ,toggleGroup: "map"
       ,allowDepress: true
       ,handler: function() {
+        vectorzindex = vectorLayer.getZIndex();
+        vectorLayer.setZIndex(999);   
         if (pointLayer && pointLayer.visibility == true)
           pointLayer.setVisibility(false);
       }
@@ -754,7 +766,41 @@ Ext.application({
         ),
         
         utmgrid,
-  
+
+        new OpenLayers.Layer.WMS(
+          "UAV MSU",
+          "http://203.151.201.129/cgi-bin/mapserv",
+          {
+            map: '/ms603/map/uav.map',
+            layers: 'uav01',
+            transparent: true
+          },
+          {isBaseLayer: false, gutter: 15}
+        ),
+
+        new OpenLayers.Layer.WMS(
+          "UAV Tk",
+          "http://203.151.201.129/cgi-bin/mapserv",
+          {
+            map: '/ms603/map/uav.map',
+            layers: 'uav02',
+            transparent: true
+          },
+          {isBaseLayer: false, gutter: 15}
+        ),
+
+        new OpenLayers.Layer.WMS(
+          "UAV Flight",
+          "http://203.151.201.129/cgi-bin/mapserv",
+          {
+            map: '/ms603/map/uav.map',
+            layers: 'uav03',
+            transparent: true
+          },
+          {isBaseLayer: false}
+        ),
+
+
        /*
         new OpenLayers.Layer.Yahoo(
           "Yahoo Street",

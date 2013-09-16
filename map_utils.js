@@ -37,6 +37,9 @@ var create_layer_markers, marker, markers, popup_marker;
 var create_layer_hili, hili;
 var create_layer_pointLayer, pointLayer, ctrl_popup_pointLayer, popup_pointLayer, del_feat_ctrl;
 var create_layer_kml, kml, select_kml;
+
+var vectorzindex = 0;
+
 google.load("earth", "1");
 //////////////////////////////////////////////
 // Utilty functions
@@ -142,14 +145,46 @@ create_layer_vectorLayer = function () {
     hideIntree: true,
     styleMap: styles
   });
+
   // Add Popup: create popup on "featureselected" 05/08/2012
   vectorLayer.events.on({
     featureselected: function (e) {
       var chk = Ext.getCmp('id_select_feat').pressed;
       if (chk == false) return false;
-      else create_popup_vectorLayer(e.feature);
+      ///// DISABLE POPUP ==> else create_popup_vectorLayer(e.feature);
+      else {
+        create_iframe_for_i2(e.feature);
+      }
     }
   });
+
+  // Add iframe for i2 here
+
+  function create_iframe_for_i2(feature) {
+
+    debugger;
+
+    new Ext.Window({
+      title : "i2_iframe"
+      ,width : 300
+      ,height: 300
+      ,layout : 'fit'
+      ,items : [{
+        xtype : "component"
+        ,autoEl : {
+          tag : "iframe"
+          ,src : "http://www.cnn.com"
+        }
+      }]
+      ,listeners: {
+        'close': function(win){
+          if (!vectorLayer.features)
+            vectorLayer.setZIndex(vectorzindex);
+        }
+      }
+    }).show();
+  }
+
   // Add Popup: create select feature control 05/08/2012
   frm_input_ctrl = new OpenLayers.Control.SelectFeature(vectorLayer);
 
@@ -158,7 +193,10 @@ create_layer_vectorLayer = function () {
     var feat = feature.clone();
     feat.geometry.transform(merc, gcs);
     var curr_loc = feat.geometry.toString();
+    alert("Point Position: " + curr_loc);
+    alert("To be call external script from I2");
     Ext.getCmp('id_location').setValue(curr_loc);
+
     if (!popup_vectorLayer) {
       popup_vectorLayer = Ext.create('GeoExt.window.Popup', {
         title: 'DSI Popup',
@@ -183,6 +221,7 @@ create_layer_vectorLayer = function () {
     //popup_vectorLayer.center(); ERROR: popup has no method center ??
     popup_vectorLayer.show();
   }
+
   // Add Popup: define "create_popup_vectorLayer" function + Input Form
   frm_input = Ext.create('Ext.form.Panel', {
     title: 'Inner Tabs',
@@ -4241,7 +4280,7 @@ var loadxls = Ext.create("Ext.form.Panel", {
   title: 'Upoad XLS (with Geom)',
   width: 500,
   frame: true,
-  title: 'Upload XLS',
+  title: 'Upload XLS/KML',
   bodyPadding: '10 10 0',
   defaults: {
     anchor: '100%',
@@ -4253,7 +4292,7 @@ var loadxls = Ext.create("Ext.form.Panel", {
     xtype: 'filefield',
     name: 'file',
     id: 'id_file_xls',
-    fieldLabel: 'XLS',
+    fieldLabel: 'XLS/KML',
     labelWidth: 50,
     msgTarget: 'side',
     allowBlank: true,

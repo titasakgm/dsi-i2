@@ -100,6 +100,10 @@ div.olLayerGoogleCopyright {
   background-image: url("img/icon_info.png") !important;
 }
 
+.i2 {
+  background-image: url("img/icon_i2.png") !important;
+}
+
 .back {
   background-image: url("img/resultset_previous.png") !important;
 }

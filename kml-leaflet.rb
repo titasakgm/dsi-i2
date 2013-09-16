@@ -49,7 +49,7 @@ Content-type: text/html
     var kml = new L.KML("#{kml_url}", {async: true});
     kml.on("loaded", function(e){
       map.fitBounds(e.target.getBounds());
-      map.zoomOut();
+      //map.zoomOut();
     });
     map.addLayer(kml);
 

@@ -250,6 +250,7 @@ Ext.application({
       ,handler: function() {
         if (pointLayer && pointLayer.visibility == true)
           pointLayer.setVisibility(false);
+        alert("To call external form from I2...");
       }
     });
     toolbarItems.push(Ext.create('Ext.button.Button', action));

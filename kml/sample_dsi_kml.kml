@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<kml xmlns="http://earth.google.com/kml/2.2">
+
+<Document>
+
+<Style id="styleCase1">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/pal3/icon40.png</href>
+      </Icon>
+      <scale>1</scale>
+    </IconStyle>
+</Style>
+
+<Style id="styleCase2">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/pal3/icon50.png</href>
+      </Icon>
+      <scale>1</scale>
+    </IconStyle>
+</Style>
+
+<Placemark>
+
+<name>คดีที่ 2556/0001</name>
+
+<styleUrl>#styleCase1</styleUrl>
+<description><![CDATA[
+      <a href="https://www.dsi.go.th/" taget="_blank">เปิดรายละเอียดคดี</a> <br />
+     นาย ก มาหา นาย ข ตอน 10 โมงวันที่ 1 ม.ค. 2556 
+<p>Reuters มีบทความแฉเบื้องหลังความตกต่ำของ HTC ว่าเกิดจากสไตล์การบริหารของซีอีโอ Peter Chou ที่เคยประสบความสำเร็จในอดีต แต่เมื่อตลาดมือถือเปลี่ยนไป สูตรการทำงานแบบเดิมกลับไม่เวิร์คแล้ว?</p>
+<p>Reuters อ้างว่าสัมภาษณ์ข้อมูลจากผู้บริหารของ HTC ทั้งในอดีตและปัจจุบันหลายคน (ไม่มีใครเปิดเผยชื่อ) ทุกคนพูดเป็นเสียงเดียวกันว่าความสำเร็จของ HTC ช่วงก่อนหน้านี้เกิดจากตัว Peter Chou ที่เริ่มทำงานกับบริษัทตั้งแต่ปี 1997 (และเป็นซีอีโอมาสิบปีแล้ว)</p>
+      ]]></description>
+
+<Point>
+
+    <coordinates>101.5081787109375,14.232437996569354,0</coordinates>
+
+</Point>
+
+</Placemark>
+
+
+
+
+<Placemark>
+
+<name>คดีที่ 2556/0002</name>
+
+<styleUrl>#styleCase2</styleUrl>
+<description><![CDATA[
+      <a href="https://www.dsi.go.th/" taget="_blank">เปิดรายละเอียดคดี</a> <br />
+     นาย ก มาหา นาย ข ตอน 10 โมงวันที่ 1 ม.ค. 2556 
+<p>Reuters มีบทความแฉเบื้องหลังความตกต่ำของ HTC ว่าเกิดจากสไตล์การบริหารของซีอีโอ Peter Chou ที่เคยประสบความสำเร็จในอดีต แต่เมื่อตลาดมือถือเปลี่ยนไป สูตรการทำงานแบบเดิมกลับไม่เวิร์คแล้ว?</p>
+<p>Reuters อ้างว่าสัมภาษณ์ข้อมูลจากผู้บริหารของ HTC ทั้งในอดีตและปัจจุบันหลายคน (ไม่มีใครเปิดเผยชื่อ) ทุกคนพูดเป็นเสียงเดียวกันว่าความสำเร็จของ HTC ช่วงก่อนหน้านี้เกิดจากตัว Peter Chou ที่เริ่มทำงานกับบริษัทตั้งแต่ปี 1997 (และเป็นซีอีโอมาสิบปีแล้ว)</p>
+      ]]></description>
+
+<Point>
+
+    <coordinates>101.5031787109375,14.239437996569354,0</coordinates>
+
+</Point>
+
+</Placemark>
+
+
+</Document>
+</kml>

@@ -106,15 +106,23 @@ kmlname = 'NA'
 if params.has_key?"file"
   file = params["file"].first 
   type = file.original_filename.split('.').last
-  
-  server_file = '../xls/' + file.original_filename
+
+  if type.downcase == 'xls'
+    server_file = '../xls/' + file.original_filename
+  elsif type.downcase == 'kml'
+    server_file = '/i2/kml/' + file.original_filename
+    kmlname = server_file
+  end
   if File.exists?(server_file)
     File.delete(server_file)
   end
   File.open(server_file.untaint, "w") do |f|
     f << file.read
   end
-  kmlname = create_kml(server_file)
+  if type.downcase == 'xml'
+    kmlname = create_kml(server_file)
+  end
+  kmlname
 end
 
 data = {}
