@@ -161,8 +161,12 @@ create_layer_vectorLayer = function () {
   // Add iframe for i2 here
 
   function create_iframe_for_i2(feature) {
-
-    debugger;
+    var x = feature.geometry.x;
+    var y = feature.geometry.y;
+    var pt = new OpenLayers.LonLat(x,y);
+    pt = pt.transform(merc,gcs);
+    var lat = pt.lat;
+    var lon = pt.lon;
 
     new Ext.Window({
       title : "i2_iframe"
@@ -173,7 +177,7 @@ create_layer_vectorLayer = function () {
         xtype : "component"
         ,autoEl : {
           tag : "iframe"
-          ,src : "http://www.cnn.com"
+          ,src : "http://172.16.7.15/dsi-i2-edw/login.aspx?lat=" + lat + "&long=" + lon
         }
       }]
       ,listeners: {
